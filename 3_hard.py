@@ -3,28 +3,36 @@ data_structure = [
   {'a': 4, 'b': 5},
   (6, {'cube': 7, 'drum': 8}),
   "Hello",
-  ((), [{(2, 'Urban', ('Urban2', 35))}])
-]
+  ((), [{(2, 'Urban', ('Urban2', 35))}])]
 
-
-#res = 0
-#for i in range(len(data_structure)):
-#  if data_structure[i].isdigit():
-#    res += data_structure[i]
-#  elif data_structure[i].isalnum():
-#    res += len(data_structure[i])
+res = 0
 
 def sum_list(list):
-  res = 0
+  global res
 
-  if len(list) == 0:
-    return res
-  for i in range(len(data_structure)):
-    if type(data_structure[i])== int():
-      res += data_structure[i]
-    elif type(data_structure[i]) == str():
-      res += len(data_structure[i])
-    else: return res + sum_list(data_structure[i])
+
+    
+      for i in list_:
+        if isinstance(i, int):
+            res += i
+        elif isinstance(i, str):
+            res += len(i)
+        elif isinstance(i, list) or isinstance(i, tuple) or isinstance(i, set):
+            sum_list(i)
+        elif isinstance(i, dict):
+            for j in i:
+                if isinstance(j, int):
+                    res += j
+                elif isinstance(j, str):
+                    res += len(j)
+                else: sum_list(j)
+                if isinstance(i[j], int):
+                    res +=i[j]
+                elif isinstance(i[j], str):
+                    res += len(i[j])
+                else: sum_list(i[j])
+
+return res
 
 x = sum_list(data_structure)
 print(x)
