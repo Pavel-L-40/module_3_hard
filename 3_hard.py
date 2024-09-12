@@ -1,18 +1,18 @@
 data_structure = [
-  [1, 2, 3],
-  {'a': 4, 'b': 5},
-  (6, {'cube': 7, 'drum': 8}),
-  "Hello",
-  ((), [{(2, 'Urban', ('Urban2', 35))}])]
+    [1, 2, 3],
+    {'a': 4, 'b': 5},
+    (6, {'cube': 7, 'drum': 8}),
+    "Hello",
+    ((), [{(2, 'Urban', ('Urban2', 35))}])]
 
 res = 0
 
-def sum_list(list):
-  global res
 
+def sum_list(list_):
 
-    
-      for i in list_:
+    global res
+
+    for i in list_:
         if isinstance(i, int):
             res += i
         elif isinstance(i, str):
@@ -25,14 +25,17 @@ def sum_list(list):
                     res += j
                 elif isinstance(j, str):
                     res += len(j)
-                else: sum_list(j)
+                else:
+                    sum_list(j)
                 if isinstance(i[j], int):
-                    res +=i[j]
+                    res += i[j]
                 elif isinstance(i[j], str):
                     res += len(i[j])
-                else: sum_list(i[j])
+                else:
+                    sum_list(i[j])
 
-return res
+
+    return res
 
 x = sum_list(data_structure)
 print(x)
